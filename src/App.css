@@ -45,6 +45,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .logo-icon { font-size: 1.6rem; }
 .logo-text strong { color: var(--agua); }
+
+/* ── NAV DESKTOP ── */
 .nav { display: flex; gap: 8px; }
 .nav-link {
   color: var(--agua-claro); padding: 8px 16px; border-radius: 8px;
@@ -52,6 +54,39 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .nav-link:hover { background: rgba(255,255,255,.1); color: white; }
 .nav-link.active { background: var(--agua-claro); color: var(--azul); font-weight: 600; }
+
+/* ── HAMBURGUER ── */
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  padding: 8px; cursor: pointer; border-radius: 8px;
+  transition: background .2s;
+}
+.hamburger:hover { background: rgba(255,255,255,.1); }
+.hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: white; border-radius: 2px; transition: all .3s;
+}
+.hamburger.aberto span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.aberto span:nth-child(2) { opacity: 0; }
+.hamburger.aberto span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── NAV MOBILE ── */
+.nav-mobile {
+  display: none; flex-direction: column;
+  background: var(--azul-medio); padding: 12px 16px 16px;
+  border-top: 1px solid rgba(255,255,255,.1);
+  gap: 4px;
+}
+.nav-mobile.aberto { display: flex; }
+.nav-mobile .nav-link {
+  padding: 12px 16px; border-radius: 10px; font-size: 1rem;
+  text-align: left; width: 100%;
+}
+
+@media (max-width: 640px) {
+  .nav { display: none; }
+  .hamburger { display: flex; }
+}
 
 /* ── MAIN ── */
 .main { flex: 1; }
@@ -263,13 +298,19 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .nec-media { border-color: var(--amarelo); }
 .nec-baixa { border-color: var(--verde); }
 
+/* ── RESPONSIVO ── */
 @media (max-width: 768px) {
   .stats-bar { grid-template-columns: repeat(2, 1fr); }
   .detalhe-grid { grid-template-columns: 1fr; }
   .form-grid { grid-template-columns: 1fr; }
   .form-grupo.full { grid-column: 1; }
+  .detalhe-titulo { font-size: 1.4rem; }
+  .section { padding: 40px 16px; }
 }
+
 @media (max-width: 480px) {
   .stats-bar { grid-template-columns: 1fr 1fr; margin: -30px 16px 0; }
   .hero-btns { flex-direction: column; align-items: center; }
+  .form-card { padding: 20px 16px; }
+  .filtros { padding: 16px; }
 }
